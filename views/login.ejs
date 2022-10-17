@@ -2,19 +2,26 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style_login.css' />
   </head>
   <body>
     <div class="container">
+      <img src="./img/avatar.jpg" class="logo">	
+		<div class="header">
+			<h1>WELCOME TO ATN SHOP</h1>		
+			<h2>BRING THE BEST QUALITY FOR YOU</h2>
+		</div>
       <div class="login">
-        <form action="/login" method="post">
-          <h1>LOG IN</h1> 	
-          <input type="text" id="user_acc" placeholder="Your Email">
-          <br>
-          <input type="password" id="user_pwd" placeholder="Password">
-          <br>
-          <input type="submit" value="Login">
-        </form>
+          <form action="/login" method="post">
+            <h1>LOG IN</h1> 	
+            <input class="center-block" type="text" name="user_acc" placeholder="Your Email">
+            <br>
+            <input class="center-block" type="password" name="user_pwd" placeholder="Password">
+            <br>
+            <input class="center-block" type="submit" value="Login" id="submit">
+            <br>
+            <h2><%= message %></h2>
+          </form>
       </div>
     </div>
   </body>

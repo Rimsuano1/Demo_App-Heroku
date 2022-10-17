@@ -1,3 +1,3 @@
 var authenticator = require("./authenticator");
-authen=authenticator("ly","1");
+var authen=authenticator("lyly","ly2");
 console.log(authen);
