@@ -1,17 +1,22 @@
 const pg_conn = require("./pg_config");
 async function authen(user, pass)
 {
-    var authenticated = false;
+    let authenticated = false;
+    let shop_id;
+    let role;
     const auth_query =
     {
-        text:'SELECT * FROM users WHERE user_name=$1 AND user_pwd=$2;',
+        text:'SELECT * FROM users WHERE name=$1 AND password=$2;',
         values: [user, pass]
-    };
-    var query_data = await pg_conn.query(auth_query);
-    if(query_data.rows.length == 1){
-        authenticated=true;
     }
-    console.log(authenticated);
-    return authenticated;
+    var query_data = await pg_conn.query(auth_query);
+    
+    if(query_data.rowCount == 1){
+        authenticated=true;
+        shop_id = query_data.rows[0].shop_id; 
+        role = query_data.rows[0].role;
+    }
+    console.log(query_data);
+    return [authenticated, shop_id, role];
 }
 module.exports=authen;
