@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='../public/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+        <div class="header">
+          <h1>Welcome back <%= user %></h1>
+        </div>
+        <div class="box"><%- select_box %>
+            <div class="table">          
+                <td>
+                  <button type='submit' name='crud' value='delete' id="delete">Delete</button>
+                  <button type='submit' name='crud' value='update' id="update">Update</button>
+                  </td>
+                <%- table_string %>
+              </div></div>
+        
+      </div>
+  </body>
+</html>

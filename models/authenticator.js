@@ -16,7 +16,7 @@ async function authen(user, pass)
         shop_id = query_data.rows[0].shop_id; 
         role = query_data.rows[0].role;
     }
-    console.log(query_data);
+    //console.log(query_data);
     return [authenticated, shop_id, role];
 }
 module.exports=authen;

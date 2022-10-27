@@ -5,8 +5,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Welcome back <%= user %></h1>
-    <%- select_box %>
-    <%- table_string %>
+    <div class="container">
+      <div class="header">
+        <h1>Welcome back <%= user %></h1>
+      </div>
+      <div class="table">
+        <%- select_box %>
+        <br>
+        <%- table_string %>
+      </div>
+    </div>
   </body>
 </html>

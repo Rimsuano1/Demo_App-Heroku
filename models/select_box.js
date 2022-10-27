@@ -7,7 +7,7 @@ async function director_box(){
   const data = await pg_conn.query(query_shops)
   pg_conn.end;
      let box_string = 
-    `<form action="/select_box" method="post">
+    `<form action="/admin/select_box" method="post">
       <label for="shop">Choose a shop: </label>
         <select name="shop" id="shop">
           <option value=0 selected>All shops</option>`;
@@ -20,7 +20,7 @@ async function director_box(){
               }
         box_string +=
        `</select>
-         <input type='submit' value='View'>
+         <input type='submit' value='View' id='view'>
     </form>`;
     // console.log("DATA: -->");
     // console.log(data);

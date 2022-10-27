@@ -28,7 +28,7 @@ async function display_product(shop_id){
         
             let num_rows = data.rowCount;//row.lenth or rowsCount 
             for (let i = 0; i < num_rows; i++){
-                table_string+=`<form action="crud" method="post">`
+                table_string+=`<form action="/users/crud" method="post">`
                 table_string += `<tr>`;
                 for (let j =0; j<num_fields; j++){
                     let field_name = data.fields[j].name
@@ -37,19 +37,19 @@ async function display_product(shop_id){
                 }
                 table_string += 
                 `<td>
-                <button type='submit' name='crud' value='delete'>Delete</button>
-                <button type='submit' name='crud' value='update'>Update</button>
+                <button type='submit' name='crud' value='delete' id='delete'>Delete</button>
+                <button type='submit' name='crud' value='update' id='update'>Update</button>
                 </td>
                 </tr></form>`
             }
             //add an empty row and insert button at the end of row
-            table_string += `<tr><form action="crud" method="post">`
+            table_string += `<tr><form action="/users/crud" method="post">`
             for (let j =0; j<num_fields; j++){
                 let field_name = data.fields[j].name
                 table_string += `<td><input type="text" name=${field_name}></td>`;
             }
             table_string += `<td>
-                <button type='submit' name='crud' value='add'>Add</button>
+                <button type='submit' name='crud' value='add' id='add'>Add</button>
             </td> `;
         table_string += `</tr></form></table>`;
         // console.log("DATA: -->");

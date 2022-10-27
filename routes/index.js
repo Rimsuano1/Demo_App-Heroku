@@ -5,60 +5,48 @@ var authen = require('../models/authenticator');
 var display_product = require('../models/table_display');
 var director_box = require('../models/select_box');
 var crud = require('../models/crud');
+var session;
 var router = express.Router();
 
 
-/* GET home page. */
+
 router.get('/', function(req, res, next) {
-  res.render('index.ejs', { title: 'ATN SHOP' });
+  res.render('index', { title: 'ATN SHOP' });
 });
 router.post('/', function(req, res, next) {
-  res.render('login.ejs', { title: 'ATN SHOP', message:'' });
+  res.render('login', { title: 'ATN SHOP', message:'' });
 });
-
 
 router.post('/login', async function(req, res, next) {
   let username = req.body.user_acc;
   let password= req.body.user_pwd;
-  let [authenticated, shop_id, role] = await authen(username, password);
+  session = req.session;
 
+  let [authenticated, shop_id, role] = await authen(username, password);
+  console.log(authenticated);
   if (authenticated==true && role =='user'){
-    let table = await display_product(shop_id);
-    res.render('users', { title: 'Welcome back', 
-                          user: username, 
-                          table_string: table});
-  } else if(authenticated==true && role =='admin'){
-    let box = await director_box();
-    let table = await display_product(shop_id);
-    res.render('admin', { title: 'ADMIN', 
-                          user: username, 
-                          select_box: box,
-                          table_string: table});
+    session.user_id = username;
+    session.shop_id = shop_id;
+    session.role = role;
+
+    res.redirect('/users')
+  } else if (authenticated==true && role =='admin'){
+    session.user_id = username;
+    session.shop_id = shop_id;
+    session.role = role;
+
+    res.redirect('/admin')
   }
   else {
-    res.render('login', {title: 'ATN SHOP', message: 'Wrong Username or Password'})
+    res.render('login', {title: 'ATN SHOP',
+                         message: 'Wrong Username or Password'})
   }
 });
-router.post('/select_box', async function(req, res, next) {
-  let shop_id=req.body.shop;
-  // console.log(shop_id);
-  let table = await display_product(shop_id);
-  let box = await director_box();
-  res.render('admin', {title: 'ADMIN', 
-                      user: 'admin',
-                      select_box: box,
-                      table_string:table})
-});
-router.post('/crud', async function(req, res, next) {
-  //console.log(req.body);
-  let results = await crud(req.body);
-  //refresh page
-  let table = await display_product(req.body.shop_id);
-  res.render('users', { title: 'Welcome to ATN shop',
-                        user: 'Ly',
-                        table_string: table});
 
+//process for logout
+router.get('/logout', function(req, res, next) {
+  req.session.destroy();
+  res.render('index', { title: 'ATN SHOP' });
 });
-
 
 module.exports = router;
