@@ -12,10 +12,11 @@ var app = express();
 //setting up session informatioin
 app.use(session({
   secret: 'long_string_for_session_secure',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge: 1800 }
-}))
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 1800 },
+  
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

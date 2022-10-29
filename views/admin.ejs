@@ -5,6 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    
     <div class="container">
       <div class="header">
         <h1>Welcome back <%= user %></h1>
@@ -13,7 +14,15 @@
         <%- select_box %>
         <br>
         <%- table_string %>
+        <br>
+        <a href="/admin">HOME PAGE</a>
+        <a href="/logout">LOG OUT</a>
       </div>
     </div>
   </body>
+  <script>
+    window.setInterval(() =>{
+      window.location.reload();
+    },10000); 
+  </script>
 </html>

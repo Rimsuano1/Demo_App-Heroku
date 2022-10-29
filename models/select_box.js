@@ -20,7 +20,7 @@ async function director_box(){
               }
         box_string +=
        `</select>
-         <input type='submit' value='View' id='view'>
+         <input type='submit' value='view' id='view'>
     </form>`;
     // console.log("DATA: -->");
     // console.log(data);
@@ -28,4 +28,3 @@ async function director_box(){
 }
 
 module.exports = director_box;
-

@@ -21,13 +21,14 @@ router.get('/', async function(req, res, next) {
 
 router.post('/crud', async function(req, res, next) {
   session = req.session;
+  let username = session.user_id;
   let results = await crud(req.body);
   //refresh page
   let table = await display_product(req.body.shop_id);
   res.render('users', { title: 'Welcome to ATN shop',
-                        user: session.user_id,
+                        user: username,
                         table_string: table});
 
 });
 
-module.exports = router;
+module.exports = router;      

@@ -44,6 +44,8 @@ router.post('/login', async function(req, res, next) {
 });
 
 //process for logout
+
+
 router.get('/logout', function(req, res, next) {
   req.session.destroy();
   res.render('index', { title: 'ATN SHOP' });
