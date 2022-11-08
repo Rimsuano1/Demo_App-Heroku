@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+
+    </style>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <div class="container01">
-      <div class="header">
-        <h1 class="index"><%= title %></h1>
-        <p class="index">Welcome to <%= title %></p>
-      </div>
-      <form action="/" method="post" id="indexPage">
-        <input type="submit" value="LOG IN" id="login">
-      </form>
-    </div>
+  <body class="image" background="https://i.pinimg.com/originals/70/fb/a0/70fba0dfb3cad645c2595d43451a0391.png">
+    <style>
+      .image{
+        width: 100%;
+        height: 100vh;
+    /*Center and scale the image nicely*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      }
+      .id{
+        padding: 70px 0;
+        text-align: center;
+      }        
+    
+      h1{
         
+        color:burlywood;
+      }
+    </style>
+    
+    <div class="id">
+    <h1>Welcome to <%= title %></h1>
+    <form method="post">
+      <input type="submit" value="Login">
+    </form>
+    </div>  
   </body>
 </html>

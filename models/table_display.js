@@ -4,7 +4,7 @@ var pg_conn = require('./pg_config');
 async function display_product(shop_id){
         //query DB to get table data
     let query_product;
-    if(shop_id === 0) {
+    if(shop_id == 0) {
         query_product = 'SELECT * FROM products'
     }else{
         query_product = {

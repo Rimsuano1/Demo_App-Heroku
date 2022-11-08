@@ -13,7 +13,7 @@ async function director_box(){
           <option value=0 selected>All shops</option>`;
             let select_items = data.rowCount;      
               for (let i =0; i<select_items;i++){
-                if (data.rows[i].role !== "admin")
+                if (data.rows[i].role !== "director")
                 {
                   box_string += `<option value=${data.rows[i].id}>${data.rows[i].name} </option>`;
                 }

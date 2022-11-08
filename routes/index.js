@@ -21,7 +21,7 @@ router.post('/login', async function(req, res, next) {
   let username = req.body.user_acc;
   let password= req.body.user_pwd;
   session = req.session;
-
+console.log(username +":"+ password)
   let [authenticated, shop_id, role] = await authen(username, password);
   console.log(authenticated);
   if (authenticated==true && role =='shop'){
