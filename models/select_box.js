@@ -9,7 +9,7 @@ async function director_box(){
      let box_string = 
     `<form action="/admin/select_box" method="post">
       <label for="shop">Choose a shop: </label>
-        <select name="shop" id="shop">
+        <select name="shops" id="shops">
           <option value=0 selected>All shops</option>`;
             let select_items = data.rowCount;      
               for (let i =0; i<select_items;i++){

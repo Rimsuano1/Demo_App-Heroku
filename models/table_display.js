@@ -5,7 +5,7 @@ async function display_product(shop_id){
         //query DB to get table data
     let query_product;
     if(shop_id === 0) {
-        query_product = 'SELECT * FROM products ORDER BY id;'
+        query_product = 'SELECT * FROM products'
     }else{
         query_product = {
             text: 'SELECT * FROM products WHERE shop_id=$1', 

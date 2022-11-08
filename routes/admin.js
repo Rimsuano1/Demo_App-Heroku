@@ -22,11 +22,12 @@ router.get('/', async function(req, res, next) {
   } 
 });
 router.post('/select_box', async function(req, res, next) {
-    let shop_id=req.body.shop;
+    let shop_id=req.body.shops;
+    username = req.session.user_id;
     let table = await display_product(shop_id);
     let box = await director_box();
     res.render('admin', {title: 'ADMIN', 
-                        user: 'admin',
+                        user: username,
                         select_box: box,
                         table_string:table})
 });

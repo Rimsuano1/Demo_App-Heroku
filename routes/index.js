@@ -24,13 +24,13 @@ router.post('/login', async function(req, res, next) {
 
   let [authenticated, shop_id, role] = await authen(username, password);
   console.log(authenticated);
-  if (authenticated==true && role =='user'){
+  if (authenticated==true && role =='shop'){
     session.user_id = username;
     session.shop_id = shop_id;
     session.role = role;
 
     res.redirect('/users')
-  } else if (authenticated==true && role =='admin'){
+  } else if (authenticated==true && role =='director'){
     session.user_id = username;
     session.shop_id = shop_id;
     session.role = role;
