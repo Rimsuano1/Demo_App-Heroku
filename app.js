@@ -14,7 +14,7 @@ app.use(session({
   secret: 'long_string_for_session_secure',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 1800 },
+  cookie: { maxAge: 60000 * 24 * 60 },
   
 }));
 // view engine setup
